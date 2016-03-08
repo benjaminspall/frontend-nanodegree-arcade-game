@@ -1,6 +1,6 @@
 #Front-End Nanodegree Arcade Game
 
-This Front-End Nanodegree Arcade Game is a take on the classic _Frogger_ arcade game. You can run the game right here in your browser.
+This Front-End Nanodegree Arcade Game is a take on the classic _Frogger_ arcade game.
 
 ## How to Play
 

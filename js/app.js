@@ -17,7 +17,7 @@ Enemy.prototype.enemySpeed = function() {
 // Parameter: dt, a time delta between ticks is used to ensure the enemies
 // run at the same speed for all computers.
 Enemy.prototype.update = function(dt) {
-    this.x = this.x + this.speed * dt;
+    this.x += this.speed * dt;
 
     // When an enemy disappears off the screen, reset enemy to starting
     // position and recalcuate enemy speed.
@@ -28,11 +28,11 @@ Enemy.prototype.update = function(dt) {
 
     // Calculates the enemy dimensions (runs large for smoother gameplay)
     var enemyDimensions = {
-       "left" : this.x - 75,
-       "right" : this.x + 75,
-       "top" : this.y - 75,
-       "bottom" : this.y + 75
-     }
+       left : this.x - 75,
+       right : this.x + 75,
+       top : this.y - 75,
+       bottom : this.y + 75
+     };
 
    // Resets player to starting position when it runs into (shares the
    // same coordinates with) an enemy.
@@ -47,7 +47,7 @@ Enemy.prototype.update = function(dt) {
          }
          // If the player's score is currently more than zero, -1
          else {
-            playerScore--
+            playerScore--;
          }
    }
 };
@@ -58,14 +58,14 @@ Enemy.prototype.render = function() {
 };
 
 // The player's starting position and starting score
-var playerStartingX = 201;
-var playerStartingY = 400;
+var PLAYERSTARTINGX = 201;
+var PLAYERSTARTINGY = 400;
 var playerScore = 0;
 
 var Player = function() {
     this.sprite = 'images/char-boy.png';
-    this.x = playerStartingX;
-    this.y = playerStartingY;
+    this.x = PLAYERSTARTINGX;
+    this.y = PLAYERSTARTINGY;
 };
 
 Player.prototype.update = function(dt) {
@@ -78,8 +78,8 @@ Player.prototype.render = function(){
 
 // Resets player to starting position after reaching water/hitting enemy
 Player.prototype.resetPosition = function() {
-    this.x = playerStartingX;
-    this.y = playerStartingY;
+    this.x = PLAYERSTARTINGX;
+    this.y = PLAYERSTARTINGY;
 };
 
 // Handles keyboard key presses (left, right, up, and down arrows) -
@@ -104,7 +104,7 @@ Player.prototype.handleInput = function(keyPress) {
       if (this.y < 100) {
         this.resetPosition();
         // +1 to player's score for reaching the water
-        playerScore++
+        playerScore++;
       }
       this.y -= stepY;
     }
@@ -117,7 +117,7 @@ Player.prototype.handleInput = function(keyPress) {
     else {
       return null;
     }
-}
+};
 
 var allEnemies = [];
 

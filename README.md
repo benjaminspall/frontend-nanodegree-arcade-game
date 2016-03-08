@@ -1,6 +1,6 @@
 #Front-End Nanodegree Arcade Game
 
-This Front-End Nanodegree Arcade Game is a take on the classic _Frogger_ arcade game.
+This Front-End Nanodegree Arcade Game is a take on the classic _Frogger_ arcade game. To run the game click the 'Download ZIP' button in the top-right of this repository's master branch, unzip its contents, then double click on index.html to open the game in your default browser.
 
 ## How to Play
 
@@ -14,4 +14,4 @@ The player's score, though currently being calculated, will be displayed in an u
 
 ## Art Assets and Starter Code
 
-The art assets and starter code for this project were provided as part of Udacity's Front-End Nanodegree Arcade Game repo, which can be viewed [here](https://github.com/udacity/frontend-nanodegree-arcade-game).
+The art assets and starter code for this project were provided as part of Udacity's Front-End Nanodegree Arcade Game repository, which can be viewed [here](https://github.com/udacity/frontend-nanodegree-arcade-game).

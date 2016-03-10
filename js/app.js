@@ -1,3 +1,12 @@
+// The player's starting position and size of steps on each axis (constants)
+var PLAYERSTARTINGX = 201;
+var PLAYERSTARTINGY = 400;
+var STEPX = 101;
+var STEPY = 84;
+
+// The player's starting score
+var playerScore = 0;
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
@@ -57,11 +66,6 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// The player's starting position and starting score
-var PLAYERSTARTINGX = 201;
-var PLAYERSTARTINGY = 400;
-var playerScore = 0;
-
 var Player = function() {
     this.sprite = 'images/char-boy.png';
     this.x = PLAYERSTARTINGX;
@@ -85,20 +89,17 @@ Player.prototype.resetPosition = function() {
 // Handles keyboard key presses (left, right, up, and down arrows) -
 // returns null if player attempts to step out of game canvas.
 Player.prototype.handleInput = function(keyPress) {
-    var stepX = 101;
-    var stepY = 84;
-
     if (keyPress === 'left') {
       if (this.x < 100) {
         return null;
       }
-      this.x -= stepX;
+      this.x -= STEPX;
     }
     else if (keyPress === 'right') {
       if (this.x > 402) {
         return null;
       }
-      this.x += stepX;
+      this.x += STEPX;
     }
     else if (keyPress === 'up') {
       if (this.y < 100) {
@@ -106,13 +107,13 @@ Player.prototype.handleInput = function(keyPress) {
         // +1 to player's score for reaching the water
         playerScore++;
       }
-      this.y -= stepY;
+      this.y -= STEPY;
     }
     else if (keyPress === 'down') {
       if (this.y >= 400) {
         return null;
       }
-      this.y += stepY;
+      this.y += STEPY;
     }
     else {
       return null;

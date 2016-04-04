@@ -57,6 +57,7 @@ Enemy.prototype.update = function(dt) {
          // If the player's score is currently more than zero, -1
          else {
             playerScore--;
+            console.log(playerScore);
          }
    }
 };
@@ -105,7 +106,8 @@ Player.prototype.handleInput = function(keyPress) {
       if (this.y < 100) {
         this.resetPosition();
         // +1 to player's score for reaching the water
-        playerScore++;
+        playerScore = playerScore + 3;
+        console.log(playerScore);
       }
       this.y -= STEPY;
     }
@@ -128,6 +130,46 @@ for (var i = 0; i < 3; i++) {
     // Enemy starting position on x-axis, y-axis, and starting speed
     allEnemies.push(new Enemy(-80, 84 * i + 60, enemyStartingSpeed));
 }
+
+// Stars
+var Star = function(x, y) {
+    this.sprite = 'images/Star.png';
+    this.x = x;
+    this.y = y;
+};
+
+var allStars = [];
+
+for (var i = 0; i < 3; i++) {
+    // Randomly places a star on one of the five stone blocks on each row
+    var j = Math.floor(Math.random() * (4 - 0 + 1));
+    allStars.push(new Star(101 * j, 85 * i + 70));
+}
+
+Star.prototype.update = function(dt) {
+    // Calculates the star dimensions (runs large for smoother gameplay)
+    var starDimensions = {
+       left : this.x - 75,
+       right : this.x + 75,
+       top : this.y - 75,
+       bottom : this.y + 75
+     };
+
+   if (player.x > starDimensions.left &&
+       player.x < starDimensions.right &&
+       player.y > starDimensions.top &&
+       player.y < starDimensions.bottom) {
+         this.x = -100;
+         this.y = -100;
+         playerScore++;
+         console.log(playerScore);
+   }
+};
+
+// Draws stars on the game canvas
+Star.prototype.render = function(){
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 // Calls the Player function
 var player = new Player();
